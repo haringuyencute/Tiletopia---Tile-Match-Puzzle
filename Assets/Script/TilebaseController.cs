@@ -14,15 +14,9 @@ public class TilebaseController : MonoBehaviour
     [SerializeField] private bool isChangeColor;
     public BoxCollider2D boxCollider2D;
     public Rigidbody2D rb;
-
     private void Update()
     {
         ResetColor();
-        if (Input.GetMouseButtonDown(1))
-        {
-            boxCollider2D.enabled = true;
-        }
-        
     }
     private void Awake()
     {
@@ -38,12 +32,12 @@ public class TilebaseController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (lsTileHigher.Count > 0)
+        if (lsTileHigher.Count > 0 || GameController.Instance.CheckLoseCondition())
         {
             return;
         }
         boxCollider2D.enabled = false;
-        GameController.Instance.sortController.HandleParent(this);
+        GameController.Instance.SortControllerRemake.HandleOnMouseDown(this);
         
     }
     

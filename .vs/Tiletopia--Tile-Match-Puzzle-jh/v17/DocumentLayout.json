@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\assets\\script\\levelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\levelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|e:\\itplus\\duancuoikhoa\\l1\\tiletopia--tile-match-puzzle-jh\\tiletopia--tile-match-puzzle-jh\\assets\\script\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\assets\\script\\parenttile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\parenttile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\assets\\script\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\assets\\script\\tilebasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\tilebasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\assets\\script\\sortcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A9C3C4-2798-BCAF-9094-96BCFEDB9CF5}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\sortcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LevelController.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\LevelController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\LevelController.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\LevelController.cs",
+              "RelativeToolTip": "Assets\\Script\\LevelController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:57:39.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ParentTile.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\ParentTile.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\ParentTile.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\ParentTile.cs",
+              "RelativeToolTip": "Assets\\Script\\ParentTile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:20:38.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TilebaseController.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\TilebaseController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TilebaseController.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\TilebaseController.cs",
+              "RelativeToolTip": "Assets\\Script\\TilebaseController.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAQwCoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:19:31.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SortController.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\SortController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SortController.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\SortController.cs",
+              "RelativeToolTip": "Assets\\Script\\SortController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:18:51.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameController.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\GameController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\GameController.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\GameController.cs",
+              "RelativeToolTip": "Assets\\Script\\GameController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAIAwwBMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:18:23.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LevelData.cs",
+              "DocumentMoniker": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\LevelData.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\LevelData.cs",
+              "ToolTip": "E:\\ITPLUS\\DuAnCuoiKhoa\\L1\\Tiletopia--Tile-Match-Puzzle-jh\\Tiletopia--Tile-Match-Puzzle-jh\\Assets\\Script\\LevelData.cs",
+              "RelativeToolTip": "Assets\\Script\\LevelData.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwDEAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:18:04.778Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
