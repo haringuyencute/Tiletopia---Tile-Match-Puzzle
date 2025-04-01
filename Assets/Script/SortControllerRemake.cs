@@ -8,6 +8,17 @@ public class SortControllerRemake : MonoBehaviour
     [SerializeField] public List<Transform> lsSlotSort;
     [SerializeField] public List<TilebaseController> lsTilebaseClicked;
     public ParticleSystem matchedParticle;
+    private void Awake()
+    {
+        this.AddLsSlotSort();
+    }
+    private void Update()
+    {
+        if (lsTilebaseClicked.Count > 0)
+        {
+            AutoSortTileSlots();
+        }
+    }
     public void AddLsSlotSort()
     {
         foreach (Transform children in transform)
@@ -16,12 +27,20 @@ public class SortControllerRemake : MonoBehaviour
             lsSlotSort.Add(children);
         }
     }
-
-    private void Awake()
+    private void AutoSortTileSlots()
     {
-        this.AddLsSlotSort();
+        for (int i = 0; i < lsTilebaseClicked.Count; i++)
+        {
+            if (lsTilebaseClicked[i] != null)
+            {
+                Vector3 correctPos = lsSlotSort[i].position;
+                if (lsTilebaseClicked[i].transform.position != correctPos)
+                {
+                    lsTilebaseClicked[i].transform.DOMove(correctPos, 0.2f);
+                }
+            }
+        }
     }
-
     public void HandleOnMouseDown(TilebaseController tileBaseParam)
     {
         int validPosSort = GetValidPosToSort(tileBaseParam);
@@ -85,16 +104,16 @@ public class SortControllerRemake : MonoBehaviour
                 if (count == 3)
                 {
                     Vector3 particlePos = matchedTiles[1].transform.position;
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.2f);
 
                     foreach (var t in matchedTiles)
                     {
                         if (t != null)
                         {
-                            t.transform.DOScale(Vector3.zero, 0.1f).SetDelay(0.2f);
+                            t.transform.DOScale(Vector3.zero, 0.1f).SetDelay(0.1f);
                         }
                     }
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.4f);
 
                     if (matchedParticle != null)
                     {
@@ -109,13 +128,15 @@ public class SortControllerRemake : MonoBehaviour
                         if (t != null)
                         {
                             t.transform.DOKill();
-                            Destroy(t.gameObject);
+                            DestroyImmediate(t.gameObject);
                         }
                     }
 
                     lsTilebaseClicked.RemoveAll(t => matchedTiles.Contains(t));
 
                     FillTile();
+                    yield return new WaitForSeconds(0.1f);
+
                     yield break;
                 }
             }
