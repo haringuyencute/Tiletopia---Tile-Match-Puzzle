@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public void Init()
+    public void GenarateLevel()
     {
-        var currentLevel = Resources.Load<GameObject>("Level/Level_" + PlayerPrefs.GetInt("CurrentLevel", 3));
+        var currentLevel = Resources.Load<GameObject>("Level/Level_" + GameController.Instance.currentLevel);
         Instantiate(currentLevel);
-        //temp.transform.parent = this.transform;
-        //GameController.Instance.levelData.GetComponent<LevelData>();
-        //GameController.Instance.levelData.current = GameController.Instance.levelData.getLevel(PlayerPrefs.GetInt("CurrentLevel",1));
+        GameController.Instance.numOfTile = FindObjectsOfType<TilebaseController>().Length;
     }
 
 }

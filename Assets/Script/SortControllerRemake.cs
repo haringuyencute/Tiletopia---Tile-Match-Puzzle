@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class SortControllerRemake : MonoBehaviour
 {
-    [SerializeField] public List<Transform> lsSlotSort;
-    [SerializeField] public List<TilebaseController> lsTilebaseClicked;
+    [SerializeField] private List<Transform> lsSlotSort;
+    public List<TilebaseController> lsTilebaseClicked;
     public ParticleSystem matchedParticle;
+    public bool Check3Tile = false;
     private void Awake()
     {
         this.AddLsSlotSort();
@@ -90,8 +91,9 @@ public class SortControllerRemake : MonoBehaviour
 
     private IEnumerator HandleTileMatch(TilebaseController tile)
     {
+        
         if (lsTilebaseClicked.Count < 3) yield break;
-
+        Check3Tile = false;
         int count = 0;
         List<TilebaseController> matchedTiles = new List<TilebaseController>();
 
@@ -103,6 +105,7 @@ public class SortControllerRemake : MonoBehaviour
                 matchedTiles.Add(lsTilebaseClicked[i]);
                 if (count == 3)
                 {
+                    Check3Tile = true;
                     Vector3 particlePos = matchedTiles[1].transform.position;
                     yield return new WaitForSeconds(0.2f);
 
@@ -119,6 +122,7 @@ public class SortControllerRemake : MonoBehaviour
                     {
                         matchedParticle.transform.position = particlePos;
                         matchedParticle.Play();
+                        GameController.Instance.audioManager.PlaySFX(GameController.Instance.audioManager.moveTile);
                     }
 
                     yield return new WaitForSeconds(0.1f);

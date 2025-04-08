@@ -3,49 +3,48 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class TilebaseController : MonoBehaviour
 {
-    public int id;
-    public List<TilebaseController> lsTilesLowerFloor;
-    public SpriteRenderer spriteRenderer;
-    public List<TilebaseController> lsTileHigher;
-    [SerializeField] private bool isChangeColor;
-    public BoxCollider2D boxCollider2D;
     public Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
+    public PolygonCollider2D polygonCollider;
+    public int id;
+    public List<TilebaseController> lsTileHigher;
+    public static bool isPause;
     private void Update()
     {
         ResetColor();
     }
     private void Awake()
     {
+        isPause = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
-       
         rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-    }
-    public void HandleMoveLocal(Transform parentTransform, Action action)
-    {
-        this.transform.parent = parentTransform;
-        this.transform.DOLocalMove(Vector3.zero, 0.5f).OnComplete(delegate { action?.Invoke();}).SetEase(Ease.InQuad);
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
     private void OnMouseDown()
     {
-        if (lsTileHigher.Count > 0 || GameController.Instance.CheckLoseCondition())
+        if (lsTileHigher.Count > 0 || GameController.Instance.SortControllerRemake.lsTilebaseClicked.Count >= 8)
         {
             return;
         }
-        boxCollider2D.enabled = false;
+        if (isPause)
+        {
+            return ;
+        }
+        GameController.Instance.audioManager.PlaySFX(GameController.Instance.audioManager.tileCLick);
+        //GameController.Instance.soundManager.PlayClickTileAudioClip();
+        polygonCollider.enabled = false;
         GameController.Instance.SortControllerRemake.HandleOnMouseDown(this);
-        
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int currentLayerIndex = gameObject.layer;
         int triggerLayerIndex = collision.gameObject.layer;
-        if ((currentLayerIndex - triggerLayerIndex) == -1)
+        if (currentLayerIndex < triggerLayerIndex)
         {
             TilebaseController tile = collision.gameObject.GetComponent<TilebaseController>();
             if (tile != null) lsTileHigher.Add(tile);
