@@ -17,6 +17,10 @@ public class LevelController : MonoBehaviour
             
         }
         GameController.Instance.numOfCurrentTile = FindObjectsOfType<TilebaseController>().Length;
+        if(PlayerPrefs.GetInt("CurrentLevel", 1) > 10)
+        {
+            SkillManager.instance.ShuffleTile();
+        }
     }
 
 }

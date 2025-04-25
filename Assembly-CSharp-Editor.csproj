@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8801BFB5-22D2-E139-1A91-275E2A399B0F}</ProjectGuid>
+    <ProjectGuid>{E90597A7-8CC6-F14B-D213-65CACD407C9F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -1239,11 +1239,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{62BB7CD7-5EF1-5F42-C880-F02468DFE7C9}</Project>
+      <Project>{3FEA30E5-B318-3AAE-B86B-15DD89276CF3}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
-      <Project>{4D5DFDE3-8853-A7FF-49A3-51344E17AFC6}</Project>
+      <Project>{4F241A58-EDEF-884D-F11F-FFCA0A272377}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
   </ItemGroup>

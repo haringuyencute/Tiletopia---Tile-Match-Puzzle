@@ -27,9 +27,12 @@ public class GameController : MonoBehaviour
         instance = this;
         currentLevel = PlayerPrefs.GetInt("CurrentLevel",1);
         if(currentLevel >= 10) currentLevel = 10;
-        levelController.GenarateLevel();
         totalTile = numOfCurrentTile;
         gameScene.Init();
+    }
+    private void Start()
+    {
+        levelController.GenarateLevel();
     }
     private void Reset()
     {

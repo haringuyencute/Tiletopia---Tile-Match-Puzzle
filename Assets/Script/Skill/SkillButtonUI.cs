@@ -63,6 +63,7 @@ public class SkillButtonUI : MonoBehaviour
     {
         SkillManager.instance.ShuffleTile();
         _shuffleSkillAmount--;
+        CameraShake.Instance.Shake(0.15f, 0.05f);
         UpdateSkill();
     }
     public void ADUndo()

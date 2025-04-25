@@ -164,7 +164,6 @@ public class SkillManager : MonoBehaviour
         {
             PlaceTileInPos(listShuffleTiles, tilePosFloors[i], i);
         }
-        CameraShake.Instance.Shake(0.15f, 0.05f);
     }
     private void PlaceTileInPos(List<TilebaseController> lsTile, List<Vector3> lsPos,int floorIndex)
     {
