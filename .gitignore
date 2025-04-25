@@ -1,3 +1,11 @@
 Library/
 Logs/
 Temp/
+Assets/Sprite/Background/**
+Assets/Sprite/ImgTile/**
+Assets/Script/LevelData.cs
+Assets/Script/ParentTile.cs
+Assets/Script/SortController.cs
+Assets/Script/TilebaseaKhanh.cs
+Assets/Script/TileManager.cs
+Assets/Script/SoundManager.cs

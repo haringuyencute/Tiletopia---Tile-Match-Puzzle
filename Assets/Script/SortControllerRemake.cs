@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using CandyCoded;
+using CandyCoded.HapticFeedback;
+using System.Linq;
+using System;
 public class SortControllerRemake : MonoBehaviour
 {
-    [SerializeField] private List<Transform> lsSlotSort;
+    public List<Transform> lsSlotSort;
     public List<TilebaseController> lsTilebaseClicked;
+    public List<TilebaseController> lsTilebaseSelected;
     public ParticleSystem matchedParticle;
-    public bool Check3Tile = false;
+    public int numTileIsMatched;
     private void Awake()
     {
         this.AddLsSlotSort();
+        numTileIsMatched = 0;
     }
     private void Update()
     {
@@ -52,14 +57,16 @@ public class SortControllerRemake : MonoBehaviour
                 RearrangeSlotSort(validPosSort);
             }
 
+            tileBaseParam.polygonCollider.enabled = false;
             MoveTileToTarget(tileBaseParam, lsSlotSort[validPosSort].position);
-            GameController.Instance.numOfTile--;
+            GameController.Instance.numOfCurrentTile--;
             lsTilebaseClicked.Insert(validPosSort, tileBaseParam);
+            lsTilebaseSelected.Add(tileBaseParam);
             StartCoroutine(HandleTileMatch(tileBaseParam));
         }
     }
 
-    protected int GetValidPosToSort(TilebaseController tileBaseParam)
+    private int GetValidPosToSort(TilebaseController tileBaseParam)
     {
         int count = 0;
         int tilePos = 0;
@@ -75,9 +82,11 @@ public class SortControllerRemake : MonoBehaviour
         return lsTilebaseClicked.Count;
     }
 
-    public virtual void MoveTileToTarget(TilebaseController tile, Vector3 targetPos)
+    public virtual void MoveTileToTarget(TilebaseController tile, Vector3 targetPos, Action onComplete = null)
     {
-        tile.gameObject.transform.DOMove(targetPos, 0.5f);
+        tile.gameObject.transform.DOMove(targetPos, 0.5f).OnComplete(() => {
+            onComplete?.Invoke();
+        });
     }
 
     protected void RearrangeSlotSort(int index)
@@ -91,9 +100,7 @@ public class SortControllerRemake : MonoBehaviour
 
     private IEnumerator HandleTileMatch(TilebaseController tile)
     {
-        
         if (lsTilebaseClicked.Count < 3) yield break;
-        Check3Tile = false;
         int count = 0;
         List<TilebaseController> matchedTiles = new List<TilebaseController>();
 
@@ -105,8 +112,9 @@ public class SortControllerRemake : MonoBehaviour
                 matchedTiles.Add(lsTilebaseClicked[i]);
                 if (count == 3)
                 {
-                    Check3Tile = true;
-                    Vector3 particlePos = matchedTiles[1].transform.position;
+                    int indexOfMiddleTile = lsTilebaseClicked.IndexOf(matchedTiles[1]);
+                    Vector3 particlePos = GameController.Instance.SortControllerRemake.lsSlotSort[indexOfMiddleTile].position;
+
                     yield return new WaitForSeconds(0.2f);
 
                     foreach (var t in matchedTiles)
@@ -120,6 +128,10 @@ public class SortControllerRemake : MonoBehaviour
 
                     if (matchedParticle != null)
                     {
+                        if (PlayerPrefs.GetInt("IsVibration") == 1)
+                        {
+                            HapticFeedback.LightFeedback();
+                        }
                         matchedParticle.transform.position = particlePos;
                         matchedParticle.Play();
                         GameController.Instance.audioManager.PlaySFX(GameController.Instance.audioManager.moveTile);
@@ -131,22 +143,33 @@ public class SortControllerRemake : MonoBehaviour
                     {
                         if (t != null)
                         {
+                            lsTilebaseSelected.Remove(t);
+                            SkillManager.instance.tilePosTracking.Remove(t.name);
                             t.transform.DOKill();
                             DestroyImmediate(t.gameObject);
                         }
                     }
 
                     lsTilebaseClicked.RemoveAll(t => matchedTiles.Contains(t));
-
                     FillTile();
                     yield return new WaitForSeconds(0.1f);
-
                     yield break;
                 }
             }
         }
     }
-
+    public bool CanMatchTriple()
+    {
+        var grouped = lsTilebaseClicked.GroupBy(t => t.id);
+        foreach (var group in grouped)
+        {
+            if (group.Count() >= 3)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     protected void FillTile()
     {
         for (int i = 0; i < lsTilebaseClicked.Count; i++)

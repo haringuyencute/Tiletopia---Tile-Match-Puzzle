@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScene : MonoBehaviour
 {
-    public Button btnPause;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private Button btnPause;
+    [SerializeField] private Slider progressBar;
     [Header("-----------PopUpPause-------------")]
     public GameObject popUpPause;
     public Button btnClose;
@@ -30,7 +33,12 @@ public class GameScene : MonoBehaviour
     public Button btnResetLose;
 
     public float checkLoseTime;
-
+    
+    private void Awake()
+    {
+        progressBar.value = 0;
+        levelText.text = "LEVEL " + PlayerPrefs.GetInt("CurrentLevel", 1);
+    }
     public void Init()
     {
         // PopUp Pause
@@ -51,15 +59,16 @@ public class GameScene : MonoBehaviour
     {
         if (CheckWinCondition())
         {
-            //popUpWin.SetActive(true);
+            //popUpWin.SetActive(true);int levelPassed = PlayerPrefs.GetInt("LevelPassed", 1);
+          
             StartCoroutine(WaitForWin());
         }
-        if(checkLose())
+        if(CheckLose())
         {
             popUpLose.SetActive(true);
         }
        // StartCoroutine(WaitForCheckLose());
-        
+        UpdateProgressBar();
     }
     #region Handle Pause Game
     public void HandleClickBtnPause()
@@ -78,13 +87,18 @@ public class GameScene : MonoBehaviour
     }
     public void HandleClickHome()
     {
-        SceneManager.LoadScene("Home");
-        
+        LoadingSceneController.sceneToLoad = "Home";
+        SceneManager.LoadScene("Loading");
+
     }
 
     public void HandleClickRestart()
     {
-        SceneManager.LoadScene("GamePlay");
+        LoadingSceneController.sceneToLoad = "GamePlay";
+        SceneManager.LoadScene("Loading");
+
+        InterstitialAd.instance.ShowAd();
+        //SceneManager.LoadScene("GamePlay");
         TilebaseController.isPause = false;
         
     }
@@ -93,7 +107,7 @@ public class GameScene : MonoBehaviour
     #region Handle Win Game
     public bool CheckWinCondition()
     {
-        return GameController.Instance.numOfTile == 0;
+        return GameController.Instance.numOfCurrentTile <= 0 && GameController.Instance.SortControllerRemake.lsTilebaseClicked.Count == 0;
     }
     
     public void CheckSameTile(int id)
@@ -111,38 +125,48 @@ public class GameScene : MonoBehaviour
 
     public void HandleClickBtnNextLevel()
     {
+        InterstitialAd.instance.ShowAd();
+        LoadingSceneController.sceneToLoad = "GamePlay";
+        SceneManager.LoadScene("Loading");
         GameController.Instance.currentLevel = PlayerPrefs.GetInt("CurrentLevel",1);
         Debug.Log(GameController.Instance.currentLevel);
         GameController.Instance.currentLevel++;
         PlayerPrefs.SetInt("CurrentLevel",GameController.Instance.currentLevel);
         PlayerPrefs.Save();
+        int levelPassed = PlayerPrefs.GetInt("LevelPassed", 1);
+        levelPassed++;
+        if (levelPassed >= 10) levelPassed = 10;
+        PlayerPrefs.SetInt("LevelPassed", levelPassed);
+        PlayerPrefs.Save();
         Debug.Log(GameController.Instance.currentLevel);
-        SceneManager.LoadScene("GamePlay");
     }
     #endregion
 
-    //public IEnumerator WaitForCheckLose()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    if (checkLose() && GameController.Instance.SortControllerRemake.Check3Tile == false)
-    //    {
-    //        popUpLose.SetActive(true);
-    //    }
-    //}
+    private float checkLoseTimer = 0f;
 
-    
-    public bool checkLose()
+    public bool CheckLose()
     {
-        // return GameController.Instance.SortControllerRemake.lsTilebaseClicked.Count >= 8;
-        if(GameController.Instance.SortControllerRemake.lsTilebaseClicked.Count >= 8 && GameController.Instance.SortControllerRemake.Check3Tile == false)
+        if (GameController.Instance.SortControllerRemake.lsTilebaseClicked.Count >= 8 && !GameController.Instance.SortControllerRemake.CanMatchTriple())
         {
-            checkLoseTime += Time.deltaTime;
-            if(checkLoseTime > 1)
+            checkLoseTimer += Time.deltaTime;
+
+            if (checkLoseTimer >= 0.5f)
             {
-                checkLoseTime = 0;
+                checkLoseTimer = 0f;
                 return true;
             }
         }
+        else
+        {
+            checkLoseTimer = 0f;
+        }
+
         return false;
+    }
+    public void UpdateProgressBar()
+    {
+        if (CheckLose() || CheckWinCondition()) return;
+        float progress = 1f - ((float)GameController.Instance.numOfCurrentTile / GameController.Instance.totalTile);
+        progressBar.value = progress;
     }
 }

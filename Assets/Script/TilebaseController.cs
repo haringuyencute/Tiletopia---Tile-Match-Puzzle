@@ -34,9 +34,13 @@ public class TilebaseController : MonoBehaviour
         {
             return ;
         }
+        SkillManager.instance.tilePosTracking.Add(this.transform.name, this.transform.position);
+
+        this.transform.SetParent(null);
+        this.transform.SetParent(GameController.Instance.ContainerTiles);
+
         GameController.Instance.audioManager.PlaySFX(GameController.Instance.audioManager.tileCLick);
-        //GameController.Instance.soundManager.PlayClickTileAudioClip();
-        polygonCollider.enabled = false;
+        GameController.Instance.lsTilesInCurrentLevel.Remove(this);
         GameController.Instance.SortControllerRemake.HandleOnMouseDown(this);
     }
     
