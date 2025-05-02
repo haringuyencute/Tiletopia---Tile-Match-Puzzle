@@ -9,3 +9,5 @@ Assets/Script/SortController.cs
 Assets/Script/TilebaseaKhanh.cs
 Assets/Script/TileManager.cs
 Assets/Script/SoundManager.cs
+Assets/MobileDependencyResolver/**
+Assets/Script/AdsMob/**

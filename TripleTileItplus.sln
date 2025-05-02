@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{3FEA30E5-B318-3AAE-B86B-15DD89276CF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMobileAds.Editor", "GoogleMobileAds.Editor.csproj", "{E3A478F4-1503-7E97-C17F-B23BE6EAA496}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{E90597A7-8CC6-F14B-D213-65CACD407C9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.Modules.UnityMathematics", "Sirenix.OdinInspector.Modules.UnityMathematics.csproj", "{4F241A58-EDEF-884D-F11F-FFCA0A272377}"
@@ -17,6 +19,10 @@ Global
 		{3FEA30E5-B318-3AAE-B86B-15DD89276CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FEA30E5-B318-3AAE-B86B-15DD89276CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FEA30E5-B318-3AAE-B86B-15DD89276CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A478F4-1503-7E97-C17F-B23BE6EAA496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A478F4-1503-7E97-C17F-B23BE6EAA496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A478F4-1503-7E97-C17F-B23BE6EAA496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A478F4-1503-7E97-C17F-B23BE6EAA496}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E90597A7-8CC6-F14B-D213-65CACD407C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E90597A7-8CC6-F14B-D213-65CACD407C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E90597A7-8CC6-F14B-D213-65CACD407C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU

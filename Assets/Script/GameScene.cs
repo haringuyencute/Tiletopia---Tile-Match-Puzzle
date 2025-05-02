@@ -97,7 +97,6 @@ public class GameScene : MonoBehaviour
         LoadingSceneController.sceneToLoad = "GamePlay";
         SceneManager.LoadScene("Loading");
 
-        InterstitialAd.instance.ShowAd();
         //SceneManager.LoadScene("GamePlay");
         TilebaseController.isPause = false;
         
@@ -125,7 +124,6 @@ public class GameScene : MonoBehaviour
 
     public void HandleClickBtnNextLevel()
     {
-        InterstitialAd.instance.ShowAd();
         LoadingSceneController.sceneToLoad = "GamePlay";
         SceneManager.LoadScene("Loading");
         GameController.Instance.currentLevel = PlayerPrefs.GetInt("CurrentLevel",1);
@@ -138,7 +136,6 @@ public class GameScene : MonoBehaviour
         if (levelPassed >= 10) levelPassed = 10;
         PlayerPrefs.SetInt("LevelPassed", levelPassed);
         PlayerPrefs.Save();
-        Debug.Log(GameController.Instance.currentLevel);
     }
     #endregion
 
@@ -166,7 +163,9 @@ public class GameScene : MonoBehaviour
     public void UpdateProgressBar()
     {
         if (CheckLose() || CheckWinCondition()) return;
+
         float progress = 1f - ((float)GameController.Instance.numOfCurrentTile / GameController.Instance.totalTile);
+
         progressBar.value = progress;
     }
 }

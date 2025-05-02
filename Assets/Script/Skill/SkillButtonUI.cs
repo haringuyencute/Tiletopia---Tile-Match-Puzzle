@@ -37,18 +37,6 @@ public class SkillButtonUI : MonoBehaviour
         LoadAmountSkill();
         UpdateSkill();
     }
-    public void Start()
-    {
-        RewardedAdsUndoButton.onRewardADUndoRewarded += ADUndo;
-        RewardedAdsHintButton.onRewardADHintRewarded += ADHint;
-        RewardedAdsShuffleButton.onRewardADShuffleRewarded += ADShuffle;
-    }
-    public void OnDestroy()
-    {
-        RewardedAdsUndoButton.onRewardADUndoRewarded -= ADUndo;
-        RewardedAdsHintButton.onRewardADHintRewarded -= ADHint;
-        RewardedAdsShuffleButton.onRewardADShuffleRewarded -= ADShuffle;
-    }
     public void Undo()
     {
         SkillManager.instance.UndoTile();
@@ -68,23 +56,30 @@ public class SkillButtonUI : MonoBehaviour
     }
     public void ADUndo()
     {
+        AdsManager.instance.ShowRewardedAd();
         _undoSKillAmount++;
         UpdateSkill();
-    }public void ADHint()
+    } public void ADHint()
     {
+        AdsManager.instance.ShowRewardedAd();
         _hintSkillAmount++;
         UpdateSkill();
-    }public void ADShuffle()
+    }
+    public void ADShuffle()
     {
+        AdsManager.instance.ShowRewardedAd();
         _shuffleSkillAmount++;
         UpdateSkill();
     }
+
     private void UpdateSkill()
     {
+        // Update skill amounts in the UI
         undoSkillAmount.text = _undoSKillAmount.ToString();
         hintSkillAmount.text = _hintSkillAmount.ToString();
         shuffleSkillAmount.text = _shuffleSkillAmount.ToString();
 
+        // Update Undo Skill UI
         if (_undoSKillAmount <= 0)
         {
             undoSkillAmount.gameObject.SetActive(false);
@@ -100,6 +95,7 @@ public class SkillButtonUI : MonoBehaviour
             undoSkillADSButton.enabled = false;
         }
 
+        // Update Hint Skill UI
         if (_hintSkillAmount <= 0)
         {
             hintSkillAmount.gameObject.SetActive(false);
@@ -115,6 +111,7 @@ public class SkillButtonUI : MonoBehaviour
             hintSkillADSButton.enabled = false;
         }
 
+        // Update Shuffle Skill UI
         if (_shuffleSkillAmount <= 0)
         {
             shuffleSkillAmount.gameObject.SetActive(false);
@@ -130,7 +127,24 @@ public class SkillButtonUI : MonoBehaviour
             shuffleSkillADSButton.enabled = false;
         }
 
-        SaveAmountSkill();
+        // Update Ad Buttons Interactivity
+        bool isAdReady = AdsManager.instance != null && AdsManager.instance.isRewardedAdReady;
+
+        if (undoSkillADSButton.enabled)
+        {
+            undoSkillADSButton.interactable = isAdReady;
+        }
+        if (hintSkillADSButton.enabled)
+        {
+            hintSkillADSButton.interactable = isAdReady;
+        }
+        if (shuffleSkillADSButton.enabled)
+        {
+            shuffleSkillADSButton.interactable = isAdReady;
+        }
+
+            // Save the updated skill amounts
+            SaveAmountSkill();
     }
     private void LoadAmountSkill()
     {

@@ -21,18 +21,20 @@ public class GameController : MonoBehaviour
     public int numOfCurrentTile;
     public int currentLevel;
     public int totalTile;
-    
     private void Awake()
     {
         instance = this;
         currentLevel = PlayerPrefs.GetInt("CurrentLevel",1);
         if(currentLevel >= 10) currentLevel = 10;
-        totalTile = numOfCurrentTile;
         gameScene.Init();
     }
     private void Start()
     {
         levelController.GenarateLevel();
+        totalTile = numOfCurrentTile;
+
+            
+        AdsManager.instance.ShowInterstitialAd();
     }
     private void Reset()
     {

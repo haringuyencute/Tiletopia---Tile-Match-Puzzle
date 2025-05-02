@@ -2459,6 +2459,7 @@ Transform:
   - {fileID: 2124463328}
   - {fileID: 1009949439}
   - {fileID: 1555290968}
+  - {fileID: 675787698}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447855800
@@ -2473,7 +2474,6 @@ GameObject:
   - component: {fileID: 447855803}
   - component: {fileID: 447855802}
   - component: {fileID: 447855804}
-  - component: {fileID: 447855805}
   m_Layer: 5
   m_Name: HintButtonAmount
   m_TagString: Untagged
@@ -2583,21 +2583,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 447855802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &447855805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447855800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed03ec540ee7ac4784d22d388a0c9e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 447855804}
-  _androidAdUnitId: Rewarded_Android
+      m_Calls:
+      - m_Target: {fileID: 1009949441}
+        m_TargetAssemblyTypeName: SkillButtonUI, Assembly-CSharp
+        m_MethodName: ADHint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,7 +3030,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666850522}
   m_CullTransparentMesh: 1
---- !u!1 &671638430
+--- !u!1 &675787697
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3040,9 +3038,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 671638431}
-  - component: {fileID: 671638433}
-  - component: {fileID: 671638432}
+  - component: {fileID: 675787698}
+  - component: {fileID: 675787699}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -3050,54 +3047,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &671638431
+--- !u!4 &675787698
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671638430}
+  m_GameObject: {fileID: 675787697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 446394710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &671638432
+--- !u!114 &675787699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671638430}
+  m_GameObject: {fileID: 675787697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d5830afabb31c4b930ca0b1fcfef85, type: 3}
+  m_Script: {fileID: 11500000, guid: 7293dcafb6a68234fa2e5ded21500660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidAdUnitId: Interstitial_Android
-  _iOsAdUnitId: Interstitial_iOS
---- !u!114 &671638433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671638430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade77e89b258f1d4d9a5bca3722f3caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidGameId: 5835513
-  _iOSGameId: 5835512
-  _testMode: 1
-  interstitialAd: {fileID: 671638432}
-  rewardedAdsUndoButton: {fileID: 1380324733}
-  rewardedAdsHintButton: {fileID: 447855805}
-  rewardedAdsShuffleButton: {fileID: 700859587}
+  isRewardedAdReady: 0
 --- !u!1 &700859582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3087,6 @@ GameObject:
   - component: {fileID: 700859585}
   - component: {fileID: 700859584}
   - component: {fileID: 700859586}
-  - component: {fileID: 700859587}
   m_Layer: 5
   m_Name: ShuffleButtonAmount
   m_TagString: Untagged
@@ -3220,21 +3196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 700859584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &700859587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700859582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ebbc5d44af5e6c42841f2dd19e13dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 700859586}
-  _androidAdUnitId: Rewarded_Android
+      m_Calls:
+      - m_Target: {fileID: 1009949441}
+        m_TargetAssemblyTypeName: SkillButtonUI, Assembly-CSharp
+        m_MethodName: ADShuffle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &720695492
 GameObject:
   m_ObjectHideFlags: 0
@@ -10902,7 +10876,6 @@ GameObject:
   - component: {fileID: 1380324731}
   - component: {fileID: 1380324730}
   - component: {fileID: 1380324732}
-  - component: {fileID: 1380324733}
   m_Layer: 5
   m_Name: UndoButtonAmount
   m_TagString: Untagged
@@ -11012,21 +10985,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1380324730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1380324733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380324727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb57d635be5c3f4b88969a26dafafcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 1380324732}
-  _androidAdUnitId: Rewarded_Android
+      m_Calls:
+      - m_Target: {fileID: 1009949441}
+        m_TargetAssemblyTypeName: SkillButtonUI, Assembly-CSharp
+        m_MethodName: ADUndo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1469269986
 GameObject:
   m_ObjectHideFlags: 0
@@ -13871,5 +13842,4 @@ SceneRoots:
   - {fileID: 984841930}
   - {fileID: 1542838364}
   - {fileID: 2123188640}
-  - {fileID: 671638431}
   - {fileID: 1172902349}
